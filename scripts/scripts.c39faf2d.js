@@ -192,6 +192,7 @@ angular.module('presidentsClubApp')
                         type: $scope.fileType(file)
                     };
                     $scope.nomineeModel.photoBookImage = obj;
+                    console.log($scope.nomineeModel.photoBookImage);
                 }
 
             };
@@ -391,7 +392,7 @@ angular.module('presidentsClubApp')
                 first: '',
                 last: '',
                 photoBookImage: null,
-                salesOrg: {},
+                salesOrg: null,
                 org: '',
                 title: '',
                 mgrFirst: '',
