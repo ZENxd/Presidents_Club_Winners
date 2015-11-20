@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" /> -->
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,700|Roboto+Condensed:400,700,300' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="styles/main.ab1bbd84.css">
+</head>
+<!-- Body class switches from island to clouds when in forms -->
+
+<body ng-app="presidentsClubApp" ng-class="{'island' : island}">
+    <!--[if lte IE 8]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+    <!-- Add your site or application content here -->
+    <div class="header">
+        <div class="navbar navbar-default" role="navigation">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#/"><img src="../images/logo.557efefb.png"></a>
+            </div>
+        </div>
+    </div>
+    <!-- Main View (Angular) -->
+    <div class="container">
+        <div class="page {{ pageClass }}" ng-view="" autoscroll="true" ng-cloak class="ng-cloak"></div>
+    </div>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <span><img class="footer-logo" src="../images/footer-logo.88b2d05e.png"></span>
+            <span class="pull-right pad-top-8 copyright">© Copyright 2015 <span style="color:#e2ba23;"> Agilent Technologies</span></span>
+        </div>
+    </footer>
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
+    <script>
+    ! function(A, n, g, u, l, a, r) {
+        A.GoogleAnalyticsObject = l, A[l] = A[l] || function() {
+                (A[l].q = A[l].q || []).push(arguments)
+            }, A[l].l = +new Date, a = n.createElement(g),
+            r = n.getElementsByTagName(g)[0], a.src = u, r.parentNode.insertBefore(a, r)
+    }(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-XXXXX-X');
+    ga('send', 'pageview');
+    </script>
+    <script src="scripts/vendor.e2dccff5.js"></script>
+    <script src="scripts/scripts.b96d62ba.js"></script>
+</body>
+
+</html>

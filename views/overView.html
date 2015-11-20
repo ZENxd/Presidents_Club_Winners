@@ -11,7 +11,7 @@
     <div class="lead">MARCH 1-5, 2016
         <div class="seal"></div> HONOLULU, HAWAII</div>
 </div>
-<div class="panel panel-default margin-top-50">
+<div class="panel panel-default margin-top-20">
     <div class="form-heading">
         <div class="wave">
             <div>
@@ -26,26 +26,26 @@
             </div>
         </div>
     </div>
-    <div class="panel-body">
+    <div class="panel-body no-pad">
         <div class="container">
             <div class="row margin-top-20">
                 <div class="col col-md-11 col-xs-11">
                     <div class="info">
                         <h1>What You Need to Know</h1>
-                        <h4 class="strong">In order to participate in the 2015-2016 President’s Club, you MUST complete all three registration steps below.</h4>
+                        <h4 class="strong">To Participate in the 2015-2016 President’s Club, you MUST complete all three registration steps below.</h4>
                         <p class="normal">
                             You and your guest will be joining your peers and their guests in celebration and recognition of your contributions to Agilent Technologies in 2015. Pack your resort clothes, sunscreen, a hat, and prepare to immerse yourself in the unique Hawaiian hospitality of Oahu.
                         </p>
                     </div>
                 </div>
             </div>
-            <div class="row margin-top-20">
-                <div class="col col-md4 col-xs-4">
+            <div class="row margin-top-10">
+                <div class="col col-md4 col-xs-4" style="width: 36%;">
                     <div class="info">
                         <p class="heading"><span class="bullet">1</span> TRAVEL REGISTRATION</p>
                         <p class="normal">
                             Winner's of the 2015-2016 President's Club must
-                            <br/> register for travel by January 15, 2016. Travel
+                            <br/> register for travel by January 16, 2016. Travel
                             <br/> registration will be managed by HRG and winners
                             <br/> can register any time after December 14, 2015.
                         </p>
@@ -68,18 +68,23 @@
                 <div class="col col-md3 col-xs-3 center padding-left-40">
                     <div class="width-200" style="margin-top:65px;">
                         <button type="button" class="btn btn-approve btn-block">REGISTER TRAVEL</button>
-                        <br/>
-                        <span class="small-yellow">You must register by Jan 16, 2016</span>
+                        <div class="padding-top-5">
+                            <span class="small-yellow">You must register by Jan 16, 2016</span>
+                        </div>
                     </div>
+                    <br/>
                     <div class="width-200" style="margin-top:78px;">
                         <button type="button" class="btn btn-approve btn-block" data-toggle="modal" data-target="#tuxedoModal">TUXEDO FORM</button>
-                        <br/>
-                        <span class="small-yellow">You must submit by Jan 29, 2016</span>
+                        <div class="padding-top-5">
+                            <span class="small-yellow">You must submit by Jan 29, 2016</span>
+                        </div>
                     </div>
+                    <br/>
                     <div class="width-200" style="margin-top:97px;">
                         <button type="button" class="btn btn-approve btn-block" data-toggle="modal" data-target="#photobookModal">PHOTO BOOK FORM</button>
-                        <br/>
-                        <span class="small-yellow">You must submit by Jan 29, 2016</span>
+                        <div class="padding-top-5">
+                            <span class="small-yellow">You must submit by Jan 29, 2016</span>
+                        </div>
                     </div>
                 </div>
                 <div class="col col-md4 col-xs-4">
@@ -123,7 +128,7 @@
     </div>
     <div class="form-heading">
         <div class="wave">
-            <div>
+            <div class="margin-top-20">
                 <br/>
                 <span class="step-name">CONTACT INFORMATION</span>
             </div>
@@ -131,7 +136,7 @@
     </div>
     <div class="panel-body">
         <div class="container">
-            <div class="row">
+            <div class="row margin-top-20">
                 <div class="col col-md-6 col-xs-6 padding-left-40">
                     <h4 class="strong">Questions about the President’s Club:</h4>
                     <p class="normal">
@@ -178,11 +183,11 @@
                 </div>
             </div>
             <div class="modal-body">
-                <div class="container form" style="width:950px;">
+                <div class="container form">
                     <div class="row">
                         <div class="col col-md-11 col-xs-11">
                             <p>
-                                Agilent Technologies President’s Club winners and managers will receive a photo booklet with their welcom packets.
+                                Agilent Technologies President’s Club winners and managers will receive a photo booklet with their welcome packets.
                                 <br/>Please respond to the questions below as concisely as possible.
                             </p>
                         </div>
@@ -205,7 +210,7 @@
                             <div class="col col-md-8 col-xs-8">
                                 <span class="asterisk">*</span> Personal Photo
                                 <p class="normal">
-                                    You must send a digital head shot of high quality (300 dpi - jpeg format) for inclusion in the photo booklet. Please email your photo directly to <a href="mailto:terry_perez@agilent.com">terry_perez@agilent.com.</a>
+                                    You must send a digital head shot of high quality (300 dpi - jpeg format) for inclusion in the photo booklet. Please email your photo directly to <a href="mailto:terry_perez@agilent.com?bcc=michael_mihojevich@agilent.com&subject=Photobook%20picture%20submission.">terry_perez@agilent.com.</a>
                                 </p>
                             </div>
                         </div>
@@ -238,7 +243,7 @@
                         <!-- Comments -->
                         <div class="row">
                             <div class="col col-md-8 col-xs-8" ng-class="{ 'has-error' : userForm.like.$invalid && !userForm.like.$pristine }">
-                                <span class="asterisk">*</span> What do you like mostabout Agilent. (50 words max)
+                                <span class="asterisk">*</span> What do you like most about Agilent? (50 words max)
                                 <textarea name="like" class="form-control required" placeholder="" ng-model="photobookModel.comments.like" rows="5" cols="50" maximum-words-validation="50" required></textarea>
                                 <ng-messages for="userForm.like.$error" ng-if="userForm.like.$touched">
                                     <ng-messages-include src="views/error-messages.html"></ng-messages-include>
@@ -256,7 +261,7 @@
                         </div>
                         <div class="row">
                             <div class="col col-md-8 col-xs-8" ng-class="{ 'has-error' : userForm.invision.$invalid && !userForm.invision.$pristine }">
-                                <span class="asterisk">*</span> What direction do you invision Agilent taking in the next 5 years. (50 words max)
+                                <span class="asterisk">*</span> What direction do you envision Agilent taking in the next 5 years? (50 words max)
                                 <textarea name="invision" class="form-control required" placeholder="" ng-model="photobookModel.comments.invision" rows="5" cols="50" maximum-words-validation="50" required></textarea>
                                 <ng-messages for="userForm.invision.$error" ng-if="userForm.invision.$touched">
                                     <ng-messages-include src="views/error-messages.html"></ng-messages-include>
@@ -265,7 +270,7 @@
                         </div>
                         <div class="row">
                             <div class="col col-md-8 col-xs-8" ng-class="{ 'has-error' : userForm.hobbies.$invalid && !userForm.hobbies.$pristine }">
-                                <span class="asterisk">*</span> What are your hobbies and pastimes?. (50 words max)
+                                <span class="asterisk">*</span> What are your hobbies and pastimes? (50 words max)
                                 <textarea name="hobbies" class="form-control required" placeholder="" ng-model="photobookModel.comments.hobbies" rows="5" cols="50" maximum-words-validation="50" required></textarea>
                                 <ng-messages for="userForm.hobbies.$error" ng-if="userForm.hobbies.$touched">
                                     <ng-messages-include src="views/error-messages.html"></ng-messages-include>
@@ -301,18 +306,18 @@
                 </div>
             </div>
             <div class="modal-body">
-                <div class="container form" style="width:950px;">
+                <div class="container form">
                     <div class="row">
                         <div class="col col-md-11 col-xs-11">
                             <p>
-                                The tuxedo package includes tuxedo jacket, tuxedo pants and shirt, bow tie, cummerbund, cuff links and dress shoes. Please be sure to bring your own socks. For the most accurate measurement, have someone help you with a tape measure. <span class="strong">PLEASE NOTE: If you plan to wear your own tuxedo to the gala, you must inform <a href="mailto:terry_lincoln@agilent.com">terry_lincoln@agilent.com</a></span>
+                                The tuxedo package includes tuxedo jacket, tuxedo pants and shirt, bow tie, cummerbund, cuff links and dress shoes. Please be sure to bring your own socks. For the most accurate measurement, have someone help you with a tape measure. <span class="strong">PLEASE NOTE: If you plan to wear your own tuxedo to the gala, you must inform <a href="mailto:terry_lincoln@agilent.com?bcc=michael_mihojevich@agilent.com&subject=Tuxedo">terry_lincoln@agilent.com</a></span>
                             </p>
                         </div>
                     </div>
                     <!-- TUXEDO ENTRY -->
                     <form name="tuxedoForm" ng-submit="post('tuxedo')" novalidate>
-                        <div class="row">
-                            <div class="col col-md-3 col-xs-4">
+                        <div class="row margin-top-0">
+                            <div class="col col-md-4 col-xs-5">
                                 <h3 class="yellow">PERSONAL INFO</h3>
                             </div>
                         </div>
@@ -341,7 +346,7 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col col-md-3 col-xs-4">
+                            <div class="col col-md-4 col-xs-5">
                                 <h3 class="yellow">MEASUREMENTS</h3>
                             </div>
                         </div>
@@ -478,7 +483,7 @@
                 </div>
             </div>
             <div class="modal-body">
-                <div class="container" style="width:950px;">
+                <div class="container">
                     <div class="row margin-bottom-30">
                         <div class="col col-md-11 col-xs-11">
                             <h4>

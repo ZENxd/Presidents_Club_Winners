@@ -60,41 +60,15 @@ angular.module('presidentsClubApp', [
 
 /**
  * @ngdoc function
- * @name presidentsClubApp.controller:FooterCtrl
- * @description
- * # FooterCtrl
- * Controller of the presidentsClubApp
- */
-angular.module('presidentsClubApp')
-    .controller('FooterCtrl', ['$scope', '$location', 'settings',
-        function($scope, $location, settings) {
-        	
-            $scope.settings = null;
-            settings.getSettings(function(result) {
-                $scope.settings = result;
-            });
-
-            $scope.next = function(path) {
-                $location.path(path);
-            };
-
-        }
-    ]);
-
-'use strict';
-
-/**
- * @ngdoc function
  * @name presidentsClubApp.controller:HomeCtrl
  * @description
  * # HomeCtrl
  * Controller of the presidentsClubApp
  */
 angular.module('presidentsClubApp')
-    .controller('HomeCtrl', ['$scope', '$rootScope', '$location', 'settings',
-        function($scope, $rootScope, $location, settings) {
+    .controller('HomeCtrl', ['$scope', '$rootScope', '$location', 'settings', '$window', 
+        function($scope, $rootScope, $location, settings, $window) {
 
-            settings.setValue('subFooter', true);
             $rootScope.island = false;
             
             $scope.settings = null;
@@ -106,6 +80,9 @@ angular.module('presidentsClubApp')
                 $location.path(path);
             };
 
+            $scope.gotoUrl = function(url){
+                $window.open(url, '_blank');
+            }
         }
     ]);
 
@@ -303,7 +280,7 @@ angular.module('presidentsClubApp')
         .service('settings', function() {
 
             var settings = {
-                'subFooter': true
+                
             };
 
             this.getSettings = function(callback) {

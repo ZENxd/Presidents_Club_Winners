@@ -11,8 +11,8 @@
     <div class="lead">MARCH 1-5, 2016
         <div class="seal"></div> HONOLULU, HAWAII</div>
 </div>
-<div class="panel panel-default margin-top-50">
-    <div class="form-heading">
+<div class="panel panel-default no-border margin-top-20">
+    <div class="form-heading" style="padding-top:2px;">
         <div class="wave">
             <div>
                 <div class="pull-right"></div>
@@ -26,8 +26,9 @@
             </div>
         </div>
     </div>
-    <div class="panel-body">
+    <div class="panel-body no-pad">
         <div class="container">
+            <!-- INTRO -->
             <div class="row margin-top-20">
                 <div class="col col-md-7 col-xs-7">
                     <div class="info">
@@ -55,69 +56,85 @@
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-    <div class="form-heading">
-        <div class="wave" style="height:15px;"></div>
-    </div>
-    <div class="margin-20"></div>
-</div>
-<div class="container wide neg-margin-left-100 margin-top-50">
-    <h3>THE RESORT</h3>
-    <h1 class="margin-top-10 margin-bottom-30">THE KAHALA RESORT</h1>
-    <p class="margin-bottom-30" style="width:780px;">
-        The Kahala Hotel & Resort is Hawaii’s reigning luxury resort among hotels in Honolulu, set on a white sand beach just ten minutes from the world-class shopping and entertainment of Waikiki, Oahu. This legendary hideaway Hawaii resort in Honolulu's plush Kahala district is a favorite with presidents, international royalty, and celebrities.
-    </p>
-    <p class="margin-top-30 margin-bottom-30" style="width:310px;">
-        <button type="button" class="btn btn-blue btn-block">
-            <span>
-                <i style="font-size:0.8em;font-weight:300">visit the</i> <br/>
-            </span>
-            <span>
-                KAHALA RESORT WEBSITE
-            </span>
-            <div style="float: right;margin-top:-13px;"><i class="fa fa-angle-right"></i></div>
-        </button>
-    </p>
-</div>
-<div class="container neg-margin-left-100 margin-top-100">
-    <div class="col col-md-4 col-xs-4 padding-left-0">
-        <div class="panel panel-default">
             <div class="form-heading">
-                <div class="wave tight">
-                </div>
-            </div>
-            <div class="panel-body green">
-                <p class="strong">
-                    THINGS TO DO
-                </p>
-                <p>
-                    Oahu has so much to offer and The President’s Club has arranged for a number of amazing adventures:
-                </p><br/>
-                <ul class="padding-left-20">
-                    <li>Spa Day at the Kahala</li>
-                    <li>VIP Exclusive Dolphin Encounter</li>
-                    <li>Sailing & Whale Watch</li>
-                    <li>Surf & Canoe with the Waikiki Beach Boys</li>
-                    <li>Submarine Exploration</li>
-                    <li>And more...</li>
-                </ul>
-                <button type="button" class="btn btn-blue padding-left-20 padding-right-20">
-                    VIEW ACTIVITIES <i class="fa fa-angle-right"></i>
-                </button>
-            </div>
-            <div class="form-heading">
-                <div class="wave tight">
-                </div>
-                <div class="margin-10"></div>
+                <div class="wave inner-wave"></div>
             </div>
         </div>
-    </div>
-    <div class="col col-md-8 col-xs-8 home-heading padding-top-180 padding-left-100 margin-bottom-150">
-        <h3>THE DESTINATION</h3>
-        <h1 class="margin-top-10 margin-bottom-30">HONOLULU, HAWAII</h1>
-        <p>
-            Hawaii is a major tourist destination and Honolulu, situated on the island of Oahu, is the main gateway to Hawaii and a major gateway into the United States. The city is also a major hub for international business, military defense, as well as famously being host to a diverse variety of East-West and Pacific culture, cuisine, and traditions. Honolulu experiences a tropical savannah climate with a mostly dry summer season. Temperatures vary little throughout the months, with average high temperatures of 80–90 °F (27–32 °C) and average lows of 65–75 °F (18–24 °C) throughout the year.
-        </p>
+        <div class="container wide hotel">
+            <!-- RESORT -->
+            <div class="row margin-top-80 padding-left-20">
+                <div class="col col-md-11 col-xs-12">
+                    <h3>THE RESORT</h3>
+                    <h1 class="margin-top-10 margin-bottom-30">THE KAHALA RESORT</h1>
+                    <p class="margin-bottom-30" style="width:780px;">
+                        The Kahala Hotel & Resort is Hawaii’s reigning luxury resort among hotels in Honolulu, set on a
+                        <br/>white sand beach just ten minutes from the world-class shopping and entertainment of Waikiki,
+                        <br/>Oahu. This legendary hideaway Hawaii resort in Honolulu's plush Kahala district is a favorite
+                        <br/>with presidents, international royalty, and celebrities.
+                    </p>
+                    <p class="margin-top-30 margin-bottom-30" style="width:310px;">
+                        <button type="button" class="btn btn-blue btn-block" ng-click="gotoUrl('http://www.kahalaresort.com/')">
+                            <span><i style="font-size:0.8em;font-weight:300">visit the</i></span>
+                            <br/>KAHALA RESORT WEBSITE
+                            <div style="float: right;margin-top:-13px;"><i class="fa fa-angle-right"></i></div>
+                        </button>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="container green hawaii">
+            <!-- HONOLULU -->
+            <div class="row padding-left-20">
+                <div class="col col-md-4 col-xs-4 padding-left-0">
+                    <div class="panel panel-default" style="margin-top:-75px;">
+                        <div class="form-heading">
+                            <div class="wave tight"/>
+                        </div>
+                        <div class="panel-body green">
+                            <h4>
+                                THINGS TO DO
+                            </h4>
+                            <p>
+                                Oahu has so much to offer and The President’s Club has arranged for a number of amazing adventures:
+                            </p>
+                            <br/>
+                            <ul class="padding-left-20">
+                                <li>Spa Day at the Kahala</li>
+                                <li>VIP Exclusive Dolphin Encounter</li>
+                                <li>Sailing & Whale Watch</li>
+                                <li>Surf & Canoe with the Waikiki Beach Boys</li>
+                                <li>Submarine Exploration</li>
+                                <li>And more...</li>
+                            </ul>
+                            <button type="button" class="btn btn-blue padding-left-20 padding-right-20" ng-click="next('/activities')">
+                                VIEW ACTIVITIES <i class="fa fa-angle-right padding-left-10"></i>
+                            </button>
+                        </div>
+                        <div class="form-heading">
+                            <div class="wave tight"/>
+                            <div class="margin-10"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col col-md-7 col-xs-7 white">
+                    <h3>THE DESTINATION</h3>
+                    <h1 class="margin-top-10 margin-bottom-30">HONOLULU, HAWAII</h1>
+                    <p class="normal">
+                        Hawaii is a major tourist destination and Honolulu, situated on the island of Oahu, is the main gateway to Hawaii and a major gateway into the United States. The city is also a major hub for international business, military defense, as well as famously being host to a diverse variety of East-West and Pacific culture, cuisine, and traditions. Honolulu experiences a tropical savannah climate with a mostly dry summer season. Temperatures vary little throughout the months, with average high temperatures of 80–90 °F (27–32 °C) and average lows of 65–75 °F (18–24 °C) throughout the year.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="panel-footer-signup">
+            <h4>SIGN UP TO REGISTER FOR YOUR VACATION </h4>
+            <p>
+                The event sign up process has several steps that must be followed in order to register completely.
+                <br/>Click the "Sign Up Now!" button to find out what you must do to participate in the President's Club celebration.
+            </p>
+            <p>
+                <button type="button" class="btn btn-approve padding-left-30 padding-right-30" ng-click="next('/overview')">SIGN UP NOW!</button>
+                <br/>
+                <span class="small-yellow">You must register by January 16, 2016</span></p>
+        </div>
     </div>
 </div>
