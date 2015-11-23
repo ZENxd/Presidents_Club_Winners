@@ -82,7 +82,7 @@ angular.module('presidentsClubApp')
 
             $scope.gotoUrl = function(url){
                 $window.open(url, '_blank');
-            }
+            };
         }
     ]);
 
@@ -96,12 +96,13 @@ angular.module('presidentsClubApp')
  * Controller of the presidentsClubApp
  */
 angular.module('presidentsClubApp')
-    .controller('OverViewCtrl', ['$scope', '$rootScope', '$location', 'settings', 'photobookService', 'tuxedoService', 'nomineeService', '$timeout',
-        function($scope, $rootScope, $location, settings, photobookService, tuxedoService, nomineeService, $timeout) {
+    .controller('OverViewCtrl', ['$scope', '$rootScope', '$location', 'settings', 'photobookService', 'tuxedoService', 'nomineeService', '$timeout', '$window',
+        function($scope, $rootScope, $location, settings, photobookService, tuxedoService, nomineeService, $timeout, $window) {
 
             settings.setValue('subFooter', false);
             $rootScope.island = true;
-            $scope.filesDone = false;
+            $scope.photobookError = false;
+            $scope.tuxedoError = false;
 
             $scope.settings = null;
             settings.getSettings(function(result) {
@@ -129,61 +130,73 @@ angular.module('presidentsClubApp')
                 $location.path(path);
             };
 
-            //Post form after validation
-            $scope.post = function(url) {
-                if ($scope.userForm.$valid) {
-                    tuxedoService.updateModel($scope.tuxModel);
+            $scope.gotoUrl = function(url) {
+                $window.open(url, '_blank');
+            };
+
+            // When cancel button is pressed on modal, the model is reset and 
+            // form set to pristine.
+            $scope.cancelModal = function(modal) {
+                if (modal === 'photo') {
+                    $scope.userForm.$setPristine();
+                    photobookService.resetModel();
+                    photobookService.getModel(function(result) {
+                        $scope.photobookModel = result;
+                    });
+                } else if (modal === 'tuxedo') {
+                    $scope.tuxedoForm.$setPristine();
+                    tuxedoService.resetModel();
+                    tuxedoService.getModel(function(result) {
+                        $scope.tuxModel = result;
+                    });
                 }
+            };
+
+            //Post photobook form after validation
+            $scope.postPhotobook = function() {
+                if ($scope.userForm.$valid) {
+                    photobookService.updateModel($scope.photobookModel);
+                    // Post to server
+                    nomineeService.postPhotobook($scope.photobookModel).then(function(result) {
+                        if (result.error) {
+                            console.log(result.msg);
+                            // This will show an error different message in the response modal
+                            $scope.photobookError = true;
+                        } else {
+                            console.log(result);
+                            $scope.photobookError = false;
+                        }
+                        // Show the response modal after post
+                        var modal = angular.element(document.querySelector('#photobookModal'));
+                        var response = angular.element(document.querySelector('#photobookModalResponse'));
+                        modal.modal('hide');
+                        response.modal('show');
+                    });
+                }
+            };
+            //Post tuxedo form after validation
+            $scope.postTuxedo = function() {
                 if ($scope.tuxedoForm.$valid) {
                     tuxedoService.updateModel($scope.tuxModel);
-                }
-            };
-
-            //Flow uploader success handler
-            $scope.flowSuccess = function(file, index) {
-            	$scope.nomineeModel.photoBookImage = null;
-                if (!$scope.timer) {
-                    $scope.timer = $timeout(
-                        function() {
-                            console.log('Timer started');
-                        },
-                        3000
-                    ).then(
-                        function() {
-                            $timeout.cancel($scope.timer);
-                            $scope.filesDone = true;
-                            $scope.timer = null;
-                            console.log('Files uploaded');
-                        },
-                        function() {
-                            console.log('Something went wrong');
-                            $timeout.cancel($scope.timer);
-                            $scope.timer = null;
+                    // Post to server
+                    nomineeService.postTuxedo($scope.tuxModel).then(function(result) {
+                        if (result.error) {
+                            console.log(result.error);
+                            // This will show an error different message in the response modal
+                            $scope.tuxedoError = true;
+                        } else {
+                            console.log(result);
+                            $scope.tuxedoError = false;
                         }
-                    );
+                        // Show the response modal after post
+                        var modal = angular.element(document.querySelector('#tuxedoModal'));
+                        var response = angular.element(document.querySelector('#tuxedoModalResponse'));
+                        modal.modal('hide');
+                        response.modal('show');
+                    });
                 }
-
-                if (file) {
-                    var obj = {
-                        path: file,
-                        type: $scope.fileType(file)
-                    };
-                    $scope.nomineeModel.photoBookImage = obj;
-                    console.log($scope.nomineeModel.photoBookImage);
-                }
-
             };
 
-            //Helpers
-            // get url file extension
-            $scope.fileType = function(filename) {
-                filename = filename.split('/').pop();
-                var a = filename.split('.');
-                if (a.length === 1 || (a[0] === '' && a.length === 2)) {
-                    return '';
-                }
-                return a.pop();
-            };
         }
     ])
     /*
@@ -310,10 +323,10 @@ angular.module('presidentsClubApp')
                     Server REST API (CRUD) operations.
                     Change URL's to path to your REST call.
                 */
-                //Post a nominee
-                postNominee: function(dataObj) {
+                //Post Photo Book
+                postPhotobook: function(dataObj) {
                     var q = $q.defer();
-                    $http.post('/api/v1/save', dataObj)
+                    $http.post('/api/v1/photobook', dataObj)
                         .success(function(result) {
                             q.resolve(result);
                         }).error(function(msg, code) {
@@ -322,34 +335,10 @@ angular.module('presidentsClubApp')
                         });
                     return q.promise;
                 },
-                //Update nominee (Approve, Deny)
-                updateNominee: function(dataObj) {
+                //Post Tuxedo
+                postTuxedo: function(dataObj) {
                     var q = $q.defer();
-                    $http.post('/api/v1/update', dataObj)
-                        .success(function(result) {
-                            q.resolve(result);
-                        }).error(function(msg, code) {
-                            q.reject(msg);
-                            console.log(msg, code);
-                        });
-                    return q.promise;
-                },
-                //Get all nominees
-                getNominees: function() {
-                    var q = $q.defer();
-                    $http.get('/api/v1/query')
-                        .success(function(result) {
-                            q.resolve(result);
-                        }).error(function(msg, code) {
-                            q.reject(msg);
-                            console.log(msg, code);
-                        });
-                    return q.promise;
-                },
-                //Get a nominee by id
-                getNomineeById: function(id) {
-                    var q = $q.defer();
-                    $http.get('/api/v1/query' + id)
+                    $http.post('/api/v1/tuxedo', dataObj)
                         .success(function(result) {
                             q.resolve(result);
                         }).error(function(msg, code) {
@@ -358,6 +347,7 @@ angular.module('presidentsClubApp')
                         });
                     return q.promise;
                 }
+
             };
         })
         /*
@@ -368,9 +358,7 @@ angular.module('presidentsClubApp')
             var template = {
                 first: '',
                 last: '',
-                photoBookImage: null,
                 salesOrg: null,
-                org: '',
                 title: '',
                 mgrFirst: '',
                 mgrLast: '',

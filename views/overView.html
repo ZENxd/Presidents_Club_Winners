@@ -31,7 +31,7 @@
             <div class="row margin-top-20">
                 <div class="col col-md-11 col-xs-11">
                     <div class="info">
-                        <h1>What You Need to Know</h1>
+                        <h1 class="margin-bottom-20">What You Need to Know</h1>
                         <h4 class="strong">To Participate in the 2015-2016 President’s Club, you MUST complete all three registration steps below.</h4>
                         <p class="normal">
                             You and your guest will be joining your peers and their guests in celebration and recognition of your contributions to Agilent Technologies in 2015. Pack your resort clothes, sunscreen, a hat, and prepare to immerse yourself in the unique Hawaiian hospitality of Oahu.
@@ -61,13 +61,13 @@
                             As part of the President's Club celebration,
                             <br/> winners and managers will receive a photo booklet
                             <br/> with their welcome packets. Please be sure to
-                            <br/> submit your photo book form by January 29, 2016.
+                            <br/> submit your photo book form by January 16, 2016.
                         </p>
                     </div>
                 </div>
                 <div class="col col-md3 col-xs-3 center padding-left-40">
                     <div class="width-200" style="margin-top:65px;">
-                        <button type="button" class="btn btn-approve btn-block">REGISTER TRAVEL</button>
+                        <button type="button" class="btn btn-approve btn-block" ng-click="gotoUrl('https://starciteap.smarteventscloud.com/rsvp/invitation/registration.asp')">REGISTER TRAVEL</button>
                         <div class="padding-top-5">
                             <span class="small-yellow">You must register by Jan 16, 2016</span>
                         </div>
@@ -83,7 +83,7 @@
                     <div class="width-200" style="margin-top:97px;">
                         <button type="button" class="btn btn-approve btn-block" data-toggle="modal" data-target="#photobookModal">PHOTO BOOK FORM</button>
                         <div class="padding-top-5">
-                            <span class="small-yellow">You must submit by Jan 29, 2016</span>
+                            <span class="small-yellow">You must submit by Jan 16, 2016</span>
                         </div>
                     </div>
                 </div>
@@ -193,7 +193,7 @@
                         </div>
                     </div>
                     <!-- NOMINEE ENTRY -->
-                    <form name="userForm" ng-submit="post('photo')" novalidate>
+                    <form name="userForm" ng-submit="postPhotobook()" novalidate>
                         <div class="row">
                             <div class="col col-md-3 col-xs-4" ng-class="{ 'has-error' : userForm.first.$invalid && !userForm.first.$pristine }">
                                 <span class="asterisk">*</span> First Name
@@ -205,11 +205,14 @@
                                 <input type="text" name="last" class="form-control required" placeholder="" ng-model="photobookModel.last" required>
                                 <p ng-show="userForm.last.$invalid && !userForm.last.$pristine" class="error">Last name is required.</p>
                             </div>
+                            <div class="col col-md-3 col-xs-4">
+                                <div class="pull-right"><span class="yellow">*</span> <span class="show-required">DENOTES REQUIRED FIELD</span></div>
+                            </div>
                         </div>
                         <div class="row">
                             <div class="col col-md-8 col-xs-8">
                                 <span class="asterisk">*</span> Personal Photo
-                                <p class="normal">
+                                <p>
                                     You must send a digital head shot of high quality (300 dpi - jpeg format) for inclusion in the photo booklet. Please email your photo directly to <a href="mailto:terry_perez@agilent.com?bcc=michael_mihojevich@agilent.com&subject=Photobook%20picture%20submission.">terry_perez@agilent.com.</a>
                                 </p>
                             </div>
@@ -280,11 +283,54 @@
                         <hr/>
                         <div class="row">
                             <div class="col col-md-11 col-xs-11">
-                                <button type="button" class="btn btn-cancel pull-left" data-dismiss="modal" aria-label="Close">CANCEL</button>
+                                <button type="button" class="btn btn-cancel pull-left" data-dismiss="modal" aria-label="Close" ng-click="cancelModal('photo')">CANCEL</button>
                                 <button type="submit" class="btn btn-form pull-right" ng-disabled="userForm.$invalid">SUBMIT FORM <i class="fa fa-angle-right fa-lg"></i></button>
                             </div>
                         </div>
                     </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Photobook Form Response Modal -->
+<div class="modal fade" id="photobookModalResponse" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="form-heading">
+                    <div class="wave">
+                        <div>
+                            <br/>
+                            <span class="step-name">PHOTO BOOK FORM</span>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="container form">
+                    <div class="row">
+                        <div class="col col-md-11 col-xs-11 center" ng-hide="photobookError">
+                            <div class="info">
+                                <h2>Your photo book form has been submitted!</h2>
+                            </div>
+                            <p>
+                                If you have any questions or changes to your submission, please contact <a href="mailto:terry_perez@agilent.com">terry_perez@agilent.com</a>
+                                <br/>Also, please remember to <span class="strong">send Terry Perez your personal photo</span> for inclusion in the photo book.
+                                <br/><p class="margin-top-20"><button type="button" class="btn btn-cancel" data-dismiss="modal" aria-label="Close" ng-click="photobookError = false">CLOSE</button></p>
+                            </p>
+                        </div>
+                        <div class="col col-md-11 col-xs-11 center" ng-show="photobookError">
+                            <div class="info">
+                                <h2>There was a problem!</h2>
+                            </div>
+                            <p>
+                                There was a problem submitting your information. Please try again.
+                            </p>
+                            <p class="margin-top-20"><button type="button" class="btn btn-cancel" data-dismiss="modal" aria-label="Close" ng-click="photobookError = false">CLOSE</button></p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -310,15 +356,18 @@
                     <div class="row">
                         <div class="col col-md-11 col-xs-11">
                             <p>
-                                The tuxedo package includes tuxedo jacket, tuxedo pants and shirt, bow tie, cummerbund, cuff links and dress shoes. Please be sure to bring your own socks. For the most accurate measurement, have someone help you with a tape measure. <span class="strong">PLEASE NOTE: If you plan to wear your own tuxedo to the gala, you must inform <a href="mailto:terry_lincoln@agilent.com?bcc=michael_mihojevich@agilent.com&subject=Tuxedo">terry_lincoln@agilent.com</a></span>
+                                The tuxedo package is for <span class="strong">MEN ONLY</span> and includes tuxedo jacket, tuxedo pants and shirt, bow tie, cummerbund, cuff links and dress shoes. Please be sure to bring your own socks. For the most accurate measurement, have someone help you with a tape measure. <span class="strong">PLEASE NOTE: If you plan to wear your own tuxedo to the gala, you must inform <a href="mailto:terry_lincoln@agilent.com?bcc=michael_mihojevich@agilent.com&subject=Tuxedo">terry_lincoln@agilent.com</a></span>
                             </p>
                         </div>
                     </div>
                     <!-- TUXEDO ENTRY -->
-                    <form name="tuxedoForm" ng-submit="post('tuxedo')" novalidate>
-                        <div class="row margin-top-0">
+                    <form name="tuxedoForm" ng-submit="postTuxedo()" novalidate>
+                        <div class="row" style="margin-top:0;">
                             <div class="col col-md-4 col-xs-5">
                                 <h3 class="yellow">PERSONAL INFO</h3>
+                            </div>
+                            <div class="col col-md-7 col-xs-8 padding-top-20">
+                                <div class="pull-right"><span class="yellow">*</span> <span class="show-required">DENOTES REQUIRED FIELD</span></div>
                             </div>
                         </div>
                         <div class="row">
@@ -341,7 +390,7 @@
                             </div>
                             <div class="col col-md-3 col-xs-4" ng-class="{ 'has-error' : tuxedoForm.last.$invalid && !tuxedoForm.last.$pristine }">
                                 <span class="asterisk">*</span> Phone Number
-                                <input class="form-control ng-pristine ng-untouched ng-valid" id="phone" name="phone" ui-mask="(999) 999-9999" ng-model="tuxedoForm.phone" placeholder="" ui-mask-placeholder="" required>
+                                <input class="form-control ng-pristine ng-untouched ng-valid" id="phone" name="phone" ui-mask="(999) 999-9999" ng-model="tuxModel.phone" placeholder="" ui-mask-placeholder="" required>
                                 <p ng-show="tuxedoForm.last.$invalid && !tuxedoForm.last.$pristine" class="error">Phone is required.</p>
                             </div>
                         </div>
@@ -457,11 +506,55 @@
                         <hr/>
                         <div class="row">
                             <div class="col col-md-11 col-xs-11">
-                                <button type="button" class="btn btn-cancel pull-left" data-dismiss="modal" aria-label="Close">CANCEL</button>
+                                <button type="button" class="btn btn-cancel pull-left" data-dismiss="modal" aria-label="Close" ng-click="cancelModal('tuxedo')">CANCEL</button>
                                 <button type="submit" class="btn btn-form pull-right" ng-disabled="tuxedoForm.$invalid">SUBMIT FORM <i class="fa fa-angle-right fa-lg"></i></button>
                             </div>
                         </div>
                     </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Tuxedo Form Response Modal -->
+<div class="modal fade" id="tuxedoModalResponse" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="form-heading">
+                    <div class="wave">
+                        <div>
+                            <br/>
+                            <span class="step-name">TUXEDO RENTAL FORM</span>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="container form">
+                    <div class="row">
+                        <div class="col col-md-11 col-xs-11 center" ng-hide="tuxedoError">
+                            <div class="info">
+                                <h3>
+                                    Your tuxedo rental form has been submitted!
+                                </h3>
+                            </div>
+                            <p>
+                                If you have any questions or changes to your submission, please contact <a href="mailto:terry_perez@agilent.com">terry_perez@agilent.com</a>
+                                <br/><p class="margin-top-20"><button type="button" class="btn btn-cancel" data-dismiss="modal" aria-label="Close" ng-click="tuxedoError = false">CLOSE</button></p>
+                            </p>
+                        </div>
+                        <div class="col col-md-11 col-xs-11 center" ng-show="tuxedoError">
+                            <div class="info">
+                                <h2>There was a problem!</h2>
+                            </div>
+                            <p>
+                                There was a problem submitting your information. Please try again.
+                            </p>
+                            <p class="margin-top-20"><button type="button" class="btn btn-cancel" data-dismiss="modal" aria-label="Close" ng-click="tuxedoError = false">CLOSE</button></p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -486,9 +579,9 @@
                 <div class="container">
                     <div class="row margin-bottom-30">
                         <div class="col col-md-11 col-xs-11">
-                            <h4>
+                            <p class="normal margin-top-20">
                                 Here are some commonly asked questions regarding dress attire for the gala event:
-                            </h4>
+                            </p>
                         </div>
                     </div>
                     <div class="row">
