@@ -192,7 +192,7 @@
                             </p>
                         </div>
                     </div>
-                    <!-- NOMINEE ENTRY -->
+                    <!-- WINNER ENTRY -->
                     <form name="userForm" ng-submit="postPhotobook()" novalidate>
                         <div class="row">
                             <div class="col col-md-3 col-xs-4" ng-class="{ 'has-error' : userForm.first.$invalid && !userForm.first.$pristine }">
@@ -248,36 +248,28 @@
                             <div class="col col-md-8 col-xs-8" ng-class="{ 'has-error' : userForm.like.$invalid && !userForm.like.$pristine }">
                                 <span class="asterisk">*</span> What do you like most about Agilent? (50 words max)
                                 <textarea name="like" class="form-control required" placeholder="" ng-model="photobookModel.comments.like" rows="5" cols="50" maximum-words-validation="50" required></textarea>
-                                <ng-messages for="userForm.like.$error" ng-if="userForm.like.$touched">
-                                    <ng-messages-include src="views/error-messages.html"></ng-messages-include>
-                                </ng-messages>
+                                <p ng-show="userForm.like.$invalid && !userForm.like.$pristine" class="error">Comment is required.</p>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col col-md-8 col-xs-8" ng-class="{ 'has-error' : userForm.goals.$invalid && !userForm.goals.$pristine }">
                                 <span class="asterisk">*</span> List one of your goals for the next 5 years. (50 words max)
                                 <textarea name="goals" class="form-control required" placeholder="" ng-model="photobookModel.comments.goals" rows="5" cols="50" maximum-words-validation="50" required></textarea>
-                                <ng-messages for="userForm.goals.$error" ng-if="userForm.goals.$touched">
-                                    <ng-messages-include src="views/error-messages.html"></ng-messages-include>
-                                </ng-messages>
+                                <p ng-show="userForm.goals.$invalid && !userForm.goals.$pristine" class="error">Comment is required.</p>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col col-md-8 col-xs-8" ng-class="{ 'has-error' : userForm.invision.$invalid && !userForm.invision.$pristine }">
                                 <span class="asterisk">*</span> What direction do you envision Agilent taking in the next 5 years? (50 words max)
                                 <textarea name="invision" class="form-control required" placeholder="" ng-model="photobookModel.comments.invision" rows="5" cols="50" maximum-words-validation="50" required></textarea>
-                                <ng-messages for="userForm.invision.$error" ng-if="userForm.invision.$touched">
-                                    <ng-messages-include src="views/error-messages.html"></ng-messages-include>
-                                </ng-messages>
+                                <p ng-show="userForm.invision.$invalid && !userForm.invision.$pristine" class="error">Comment is required.</p>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col col-md-8 col-xs-8" ng-class="{ 'has-error' : userForm.hobbies.$invalid && !userForm.hobbies.$pristine }">
                                 <span class="asterisk">*</span> What are your hobbies and pastimes? (50 words max)
                                 <textarea name="hobbies" class="form-control required" placeholder="" ng-model="photobookModel.comments.hobbies" rows="5" cols="50" maximum-words-validation="50" required></textarea>
-                                <ng-messages for="userForm.hobbies.$error" ng-if="userForm.hobbies.$touched">
-                                    <ng-messages-include src="views/error-messages.html"></ng-messages-include>
-                                </ng-messages>
+                                <p ng-show="userForm.hobbies.$invalid && !userForm.hobbies.$pristine" class="error">Comment is required.</p>
                             </div>
                         </div>
                         <hr/>

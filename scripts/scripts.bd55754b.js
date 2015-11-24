@@ -132,44 +132,77 @@ angular.module('presidentsClubApp')
             $scope.postPhotobook = function() {
                 if ($scope.userForm.$valid) {
                     photobookService.updateModel($scope.photobookModel);
-                    // Post to server
-                    winnerService.postPhotobook($scope.photobookModel).then(function(result) {
-                        if (result.error) {
-                            console.log(result.msg);
-                            // This will show an error different message in the response modal
-                            $scope.photobookError = true;
-                        } else {
-                            console.log(result);
-                            $scope.photobookError = false;
+
+                    // Check Model
+                    var checkModel = true;
+                    for (var prop in $scope.photobookModel) {
+                        if ($scope.photobookModel.hasOwnProperty(prop)) {
+                            if ($scope.photobookModel[prop] === null || $scope.photobookModel[prop] === '') {
+                                console.log(prop, ' was null');
+                                checkModel = false;
+                            }
                         }
-                        // Show the response modal after post
-                        var modal = angular.element(document.querySelector('#photobookModal'));
-                        var response = angular.element(document.querySelector('#photobookModalResponse'));
-                        modal.modal('hide');
-                        response.modal('show');
-                    });
+                    }
+
+                    if (!checkModel) {
+                        $window.confirm('Some information is missing. Please check the forms and try again.');
+                    } else {
+                        // Post to server
+                        winnerService.postPhotobook($scope.photobookModel).then(function(result) {
+                            if (result.error) {
+                                console.log(result.msg);
+                                // This will show an error different message in the response modal
+                                $scope.photobookError = true;
+                            } else {
+                                console.log(result);
+                                $scope.photobookError = false;
+                            }
+                            // Show the response modal after post
+                            var modal = angular.element(document.querySelector('#photobookModal'));
+                            var response = angular.element(document.querySelector('#photobookModalResponse'));
+                            modal.modal('hide');
+                            response.modal('show');
+                        });
+                    }
                 }
             };
+
             //Post tuxedo form after validation
             $scope.postTuxedo = function() {
                 if ($scope.tuxedoForm.$valid) {
                     tuxedoService.updateModel($scope.tuxModel);
-                    // Post to server
-                    winnerService.postTuxedo($scope.tuxModel).then(function(result) {
-                        if (result.error) {
-                            console.log(result.error);
-                            // This will show an error different message in the response modal
-                            $scope.tuxedoError = true;
-                        } else {
-                            console.log(result);
-                            $scope.tuxedoError = false;
+
+                    // Check Model
+                    var checkModel = true;
+                    for (var prop in $scope.tuxModel) {
+                        if ($scope.tuxModel.hasOwnProperty(prop)) {
+                            if ($scope.tuxModel[prop] === null || $scope.tuxModel[prop] === '') {
+                                console.log(prop, ' was null');
+                                checkModel = false;
+                            }
                         }
-                        // Show the response modal after post
-                        var modal = angular.element(document.querySelector('#tuxedoModal'));
-                        var response = angular.element(document.querySelector('#tuxedoModalResponse'));
-                        modal.modal('hide');
-                        response.modal('show');
-                    });
+                    }
+
+                    if (!checkModel) {
+                        $window.confirm('Some information is missing. Please check the forms and try again.');
+                    } else {
+                        // Post to server
+                        winnerService.postTuxedo($scope.tuxModel).then(function(result) {
+                            if (result.error) {
+                                console.log(result.error);
+                                // This will show an error different message in the response modal
+                                $scope.tuxedoError = true;
+                            } else {
+                                console.log(result);
+                                $scope.tuxedoError = false;
+                            }
+                            // Show the response modal after post
+                            var modal = angular.element(document.querySelector('#tuxedoModal'));
+                            var response = angular.element(document.querySelector('#tuxedoModalResponse'));
+                            modal.modal('hide');
+                            response.modal('show');
+                        });
+                    }
                 }
             };
 
