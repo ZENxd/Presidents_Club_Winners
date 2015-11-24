@@ -16,8 +16,7 @@ angular.module('presidentsClubApp', [
         'ngRoute',
         'ngSanitize',
         'ngTouch',
-        'ui.mask',
-        'flow'
+        'ui.mask'
     ])
     .config(function($routeProvider, $sceDelegateProvider, $httpProvider) {
         $httpProvider.useApplyAsync(true);
@@ -45,15 +44,6 @@ angular.module('presidentsClubApp', [
             .otherwise({
                 redirectTo: '/'
             });
-    }).run(['$rootScope',
-        function($rootScope) {
-            $rootScope.island = false;
-        }
-    ])
-    .value('globals', {
-        loader: {
-            show: false
-        }
     });
 
 'use strict';
@@ -66,15 +56,8 @@ angular.module('presidentsClubApp', [
  * Controller of the presidentsClubApp
  */
 angular.module('presidentsClubApp')
-    .controller('HomeCtrl', ['$scope', '$rootScope', '$location', 'settings', '$window', 
-        function($scope, $rootScope, $location, settings, $window) {
-
-            $rootScope.island = false;
-            
-            $scope.settings = null;
-            settings.getSettings(function(result) {
-                $scope.settings = result;
-            });
+    .controller('HomeCtrl', ['$scope', '$rootScope', '$location', '$window', 
+        function($scope, $rootScope, $location, $window) {
 
             $scope.next = function(path) {
                 $location.path(path);
@@ -96,18 +79,11 @@ angular.module('presidentsClubApp')
  * Controller of the presidentsClubApp
  */
 angular.module('presidentsClubApp')
-    .controller('OverViewCtrl', ['$scope', '$rootScope', '$location', 'settings', 'photobookService', 'tuxedoService', 'nomineeService', '$timeout', '$window',
-        function($scope, $rootScope, $location, settings, photobookService, tuxedoService, nomineeService, $timeout, $window) {
+    .controller('OverViewCtrl', ['$scope', '$rootScope', '$location', 'photobookService', 'tuxedoService', 'winnerService', '$timeout', '$window',
+        function($scope, $rootScope, $location, photobookService, tuxedoService, winnerService, $timeout, $window) {
 
-            settings.setValue('subFooter', false);
-            $rootScope.island = true;
             $scope.photobookError = false;
             $scope.tuxedoError = false;
-
-            $scope.settings = null;
-            settings.getSettings(function(result) {
-                $scope.settings = result;
-            });
 
             $scope.salesOrg = [{
                 id: 0,
@@ -157,7 +133,7 @@ angular.module('presidentsClubApp')
                 if ($scope.userForm.$valid) {
                     photobookService.updateModel($scope.photobookModel);
                     // Post to server
-                    nomineeService.postPhotobook($scope.photobookModel).then(function(result) {
+                    winnerService.postPhotobook($scope.photobookModel).then(function(result) {
                         if (result.error) {
                             console.log(result.msg);
                             // This will show an error different message in the response modal
@@ -179,7 +155,7 @@ angular.module('presidentsClubApp')
                 if ($scope.tuxedoForm.$valid) {
                     tuxedoService.updateModel($scope.tuxModel);
                     // Post to server
-                    nomineeService.postTuxedo($scope.tuxModel).then(function(result) {
+                    winnerService.postTuxedo($scope.tuxModel).then(function(result) {
                         if (result.error) {
                             console.log(result.error);
                             // This will show an error different message in the response modal
@@ -235,16 +211,8 @@ angular.module('presidentsClubApp')
  * Controller of the presidentsClubApp
  */
 angular.module('presidentsClubApp')
-    .controller('ActivitiesCtrl', ['$scope', '$rootScope', '$location', 'settings',
-        function($scope, $rootScope, $location, settings) {
-
-            settings.setValue('subFooter', false);
-            $rootScope.island = true;
-            
-            $scope.settings = null;
-            settings.getSettings(function(result) {
-                $scope.settings = result;
-            });
+    .controller('ActivitiesCtrl', ['$scope', '$rootScope', '$location', 
+        function($scope, $rootScope, $location) {
 
             $scope.next = function(path) {
                 $location.path(path);
@@ -262,16 +230,8 @@ angular.module('presidentsClubApp')
  * Controller of the presidentsClubApp
  */
 angular.module('presidentsClubApp')
-    .controller('FaqCtrl', ['$scope', '$rootScope', '$location', 'settings',
-        function($scope, $rootScope, $location, settings) {
-
-            settings.setValue('subFooter', false);
-            $rootScope.island = true;
-            
-            $scope.settings = null;
-            settings.getSettings(function(result) {
-                $scope.settings = result;
-            });
+    .controller('FaqCtrl', ['$scope', '$rootScope', '$location', 
+        function($scope, $rootScope, $location) {
 
             $scope.next = function(path) {
                 $location.path(path);
@@ -282,42 +242,15 @@ angular.module('presidentsClubApp')
 
 /**
  * @ngdoc function
- * @name presidentsClubApp.service:settings
+ * @name presidentsClubApp.service:winnerService
  * @description
- * # Settings
- * Show/hide nav based items for the presidentsClubApp
- */
-(function() {
-    'use strict';
-    angular.module('presidentsClubApp')
-        .service('settings', function() {
-
-            var settings = {
-                
-            };
-
-            this.getSettings = function(callback) {
-                callback(settings);
-            };
-
-            this.setValue = function(key, val) {
-                settings[key] = val;
-            };
-
-        });
-})();
-
-/**
- * @ngdoc function
- * @name presidentsClubApp.service:nomineeService
- * @description
- * # NomineeService
+ * # winnerService
  * Main HTTP Service for the presidentsClubApp
  */
 (function() {
     'use strict';
     angular.module('presidentsClubApp')
-        .factory('nomineeService', function($http, $log, $q) {
+        .factory('winnerService', function($http, $log, $q) {
             return {
                 /* 
                     Server REST API (CRUD) operations.
