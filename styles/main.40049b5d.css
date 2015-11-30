@@ -9556,7 +9556,7 @@ a.pipe-left {
 }
 
 /* line 745, ../../app/styles/main.scss */
-.more-info, .more-info:active, .more-info:hover {
+.notification {
   color: #C93534;
   font-weight: bold;
 }
