@@ -177,8 +177,10 @@ angular.module('presidentsClubApp')
                     for (var prop in $scope.tuxModel) {
                         if ($scope.tuxModel.hasOwnProperty(prop)) {
                             if ($scope.tuxModel[prop] === null || $scope.tuxModel[prop] === '') {
-                                console.log(prop, ' was null');
-                                checkModel = false;
+                                if(prop !== 'guestOf') {
+                                    console.log(prop, ' was null');
+                                    checkModel = false;
+                                }
                             }
                         }
                     }

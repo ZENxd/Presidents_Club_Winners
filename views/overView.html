@@ -489,10 +489,9 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col col-md-4 col-xs-5" ng-class="{ 'has-error' : tuxedoForm.guestOf.$invalid && !tuxedoForm.guestOf.$pristine }">
-                                <span class="asterisk">*</span> Guest Of...
-                                <input type="text" name="guestOf" class="form-control required" placeholder="" ng-model="tuxModel.guestOf" required>
-                                <p ng-show="tuxedoForm.guestOf.$invalid && !tuxedoForm.guestOf.$pristine" class="error">Guest Of is required.</p>
+                            <div class="col col-md-4 col-xs-5">
+                                Guest Of...
+                                <input type="text" name="guestOf" class="form-control" placeholder="" ng-model="tuxModel.guestOf">
                             </div>
                         </div>
                         <hr/>
