@@ -1,0 +1,235 @@
+<div class="container heading">
+    <div>
+        <h4>
+            CONGRATULATIONS, YOU’RE A WINNER OF THE 2015-2016
+        </h4>
+        <br/>
+        <h1>
+            PRESIDENT'S CLUB
+        </h1>
+    </div>
+    <div class="lead">MARCH 1-5, 2016
+        <div class="seal"></div> HONOLULU, HAWAII</div>
+</div>
+<div class="panel panel-default">
+    <div class="form-heading">
+        <div class="wave">
+            <div>
+                <div class="pull-right"></div>
+                <span class="step"></span>
+                <br/>
+                <!-- <span class="step-name">THE AWARD</span> -->
+                <button type="button" class="btn btn-wave" ng-click="next('/')"><i class="fa fa-home"></i></button>
+                <button type="button" class="btn btn-wave active" ng-click="next('/overview')" style="width:150px;">OVERVIEW</button>
+                <button type="button" class="btn btn-wave" style="width:150px;" ng-click="next('/activities')">ACTIVITIES</button>
+                <button type="button" class="btn btn-wave" style="width:150px;" ng-click="next('/faq')">FAQ</button>
+            </div>
+        </div>
+    </div>
+    <div class="panel-body no-pad">
+        <div class="container form">
+            <div class="row">
+                <div class="col col-md-11 col-xs-11 info">
+                    <h1 class="margin-bottom-20">Tuxedo Rental Form</h1>
+                    <p>
+                        The tuxedo package is for <span class="strong">MEN ONLY</span> and includes tuxedo jacket, tuxedo pants and shirt, bow tie, cummerbund, cuff links and dress shoes. Please be sure to bring your own socks. For the most accurate measurement, have someone help you with a tape measure.<br/> <span class="strong">PLEASE NOTE: If you plan to wear your own tuxedo to the gala, you must inform <a href="mailto:terry_lincoln@agilent.com?bcc=michael_mihojevich@agilent.com&subject=Tuxedo">terry_lincoln@agilent.com</a></span>
+                    </p>
+                </div>
+            </div>
+            <!-- TUXEDO ENTRY -->
+            <form name="tuxedoForm" class="margin-left-20" ng-submit="postTuxedo()" novalidate>
+                <div class="row" style="margin-top:0;">
+                    <div class="col col-md-4 col-xs-5">
+                        <h3 class="yellow">PERSONAL INFO</h3>
+                    </div>
+                    <div class="col col-md-7 col-xs-8 padding-top-20">
+                        <div class="pull-right"><span class="yellow">*</span> <span class="show-required">DENOTES REQUIRED FIELD</span></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col col-md-3 col-xs-4" ng-class="{ 'has-error' : tuxedoForm.first.$invalid && !tuxedoForm.first.$pristine }">
+                        <span class="asterisk">*</span> First Name
+                        <input type="text" name="first" class="form-control required" placeholder="" ng-model="tuxModel.first" required>
+                        <p ng-show="tuxedoForm.first.$invalid && !tuxedoForm.first.$pristine" class="error">First name is required.</p>
+                    </div>
+                    <div class="col col-md-3 col-xs-4" ng-class="{ 'has-error' : tuxedoForm.last.$invalid && !tuxedoForm.last.$pristine }">
+                        <span class="asterisk">*</span> Last Name
+                        <input type="text" name="last" class="form-control required" placeholder="" ng-model="tuxModel.last" required>
+                        <p ng-show="tuxedoForm.last.$invalid && !tuxedoForm.last.$pristine" class="error">Last name is required.</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col col-md-3 col-xs-4" ng-class="{ 'has-error' : tuxedoForm.email.$invalid && !tuxedoForm.email.$pristine }">
+                        <span class="asterisk">*</span> Email
+                        <input type="email" name="email" class="form-control required" placeholder="" ng-model="tuxModel.email" required>
+                        <p ng-show="tuxedoForm.email.$invalid && !tuxedoForm.email.$pristine" class="error">Email name is required.</p>
+                    </div>
+                    <div class="col col-md-3 col-xs-4" ng-class="{ 'has-error' : tuxedoForm.last.$invalid && !tuxedoForm.last.$pristine }">
+                        <span class="asterisk">*</span> Phone Number
+                        <input class="form-control ng-pristine ng-untouched ng-valid" id="phone" name="phone" ui-mask="(999) 999-9999" ng-model="tuxModel.phone" placeholder="" ui-mask-placeholder="" required>
+                        <p ng-show="tuxedoForm.last.$invalid && !tuxedoForm.last.$pristine" class="error">Phone is required.</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col col-md-4 col-xs-5">
+                        <h3 class="yellow">MEASUREMENTS</h3>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col col-md-2 col-xs-3" ng-class="{ 'has-error' : tuxedoForm.height.$invalid && !tuxedoForm.height.$pristine }">
+                        <span class="asterisk">*</span> Height
+                        <input type="text" name="height" class="form-control required" placeholder="" ng-model="tuxModel.measurements.height" required>
+                        <p ng-show="tuxedoForm.height.$invalid && !tuxedoForm.height.$pristine" class="error">Height is required.</p>
+                    </div>
+                    <div class="col col-md-2 col-xs-3" ng-class="{ 'has-error' : tuxedoForm.weight.$invalid && !tuxedoForm.weight.$pristine }">
+                        <span class="asterisk">*</span> Weight
+                        <input type="text" name="weight" class="form-control required" placeholder="" ng-model="tuxModel.measurements.weight" required>
+                        <p ng-show="tuxedoForm.weight.$invalid && !tuxedoForm.weight.$pristine" class="error">Weight is required.</p>
+                    </div>
+                    <div class="col col-md-7 col-xs-8">
+                        <p class="normal padding-top-20">Measure from top of head to the floor without shoes for height.</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col col-md-4 col-xs-5" ng-class="{ 'has-error' : tuxedoForm.waist.$invalid && !tuxedoForm.waist.$pristine }">
+                        <span class="asterisk">*</span> Waist
+                        <input type="text" name="waist" class="form-control required" placeholder="" ng-model="tuxModel.measurements.waist" required>
+                        <p ng-show="tuxedoForm.waist.$invalid && !tuxedoForm.waist.$pristine" class="error">Waist is required.</p>
+                    </div>
+                    <div class="col col-md-7 col-xs-8">
+                        <p class="normal">Tuxedo trousers have a longer rise than most trousers; therefore they must be worn higher than the waist. To find the proper fit, measure just above the hipbone across the navel. Make sure there is no bulky material around the waist. Insert a finger between the tape and the body to insure proper ease.</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col col-md-4 col-xs-5" ng-class="{ 'has-error' : tuxedoForm.outSeam.$invalid && !tuxedoForm.outSeam.$pristine }">
+                        <span class="asterisk">*</span> Out Seam
+                        <input type="text" name="outSeam" class="form-control required" placeholder="" ng-model="tuxModel.measurements.outSeam" required>
+                        <p ng-show="tuxedoForm.outSeam.$invalid && !tuxedoForm.outSeam.$pristine" class="error">Out Seam is required.</p>
+                    </div>
+                    <div class="col col-md-7 col-xs-8">
+                        <p class="normal">Stand straight with eyes looking forward. Draw an imaginary line horizontal from the navel to just above the hips. Extend the tape down the side of the leg to the outside arch of the shoe. This measurement gives you the length of the trousers as well as a guide for coat length. Make sure you are wearing shoes you will be wearing for the event, or a close approximation.</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col col-md-4 col-xs-5" ng-class="{ 'has-error' : tuxedoForm.coatInsleeve.$invalid && !tuxedoForm.coatInsleeve.$pristine }">
+                        <span class="asterisk">*</span> Coat Insleeve
+                        <input type="text" name="coatInsleeve" class="form-control required" placeholder="" ng-model="tuxModel.measurements.coatInsleeve" required>
+                        <p ng-show="tuxedoForm.coatInsleeve.$invalid && !tuxedoForm.coatInsleeve.$pristine" class="error">Coat Insleeve is required.</p>
+                    </div>
+                    <div class="col col-md-7 col-xs-8">
+                        <p class="normal">This is a measurement of the coat itself. It is the distance between the cuff of the coat sleeve to the underarm following the inside seam of the sleeve. If you should need the sleeves altered from the standard lengths, indicate it with your request.</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col col-md-4 col-xs-5" ng-class="{ 'has-error' : tuxedoForm.hip.$invalid && !tuxedoForm.hip.$pristine }">
+                        <span class="asterisk">*</span> Hip
+                        <input type="text" name="hip" class="form-control required" placeholder="" ng-model="tuxModel.measurements.hip" required>
+                        <p ng-show="tuxedoForm.hip.$invalid && !tuxedoForm.hip.$pristine" class="error">Hip is required.</p>
+                    </div>
+                    <div class="col col-md-7 col-xs-8">
+                        <p class="normal">This is often overlooked, but very important measurement. Even though the waist may measure a certain size, the hips must be able to fit into the trouser without pulling. Remove any bulky articles from your pockets. Place the tape directly over the pants around the largest part of the seat.</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col col-md-4 col-xs-5" ng-class="{ 'has-error' : tuxedoForm.chest.$invalid && !tuxedoForm.chest.$pristine }">
+                        <span class="asterisk">*</span> Chest
+                        <input type="text" name="chest" class="form-control required" placeholder="" ng-model="tuxModel.measurements.chest" required>
+                        <p ng-show="tuxedoForm.chest.$invalid && !tuxedoForm.chest.$pristine" class="error">Chest is required.</p>
+                    </div>
+                    <div class="col col-md-7 col-xs-8">
+                        <p class="normal">This measurement is taken with the coat off, around the chest. Place the tape well up under the arms, over the shoulder blades, and over the chest in front. Insert finger between the tape and the body to insure proper ease. For a true measurement make sure you are not flexing your chest and your arms are down at your sides.</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col col-md-4 col-xs-5" ng-class="{ 'has-error' : tuxedoForm.coatInsleeve.$invalid && !tuxedoForm.neck.$pristine }">
+                        <span class="asterisk">*</span> Neck
+                        <input type="text" name="neck" class="form-control required" placeholder="" ng-model="tuxModel.measurements.neck" required>
+                        <p ng-show="tuxedoForm.neck.$invalid && !tuxedoForm.neck.$pristine" class="error">Neck is required.</p>
+                    </div>
+                    <div class="col col-md-7 col-xs-8">
+                        <p class="normal">Measure the collar unbuttoned. Place the tape low on the neck where the shirt collar normally falls. Allow a finger space between the neck and the tape. Make sure this measurement is in proportion to the other measurements.</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col col-md-4 col-xs-5" ng-class="{ 'has-error' : tuxedoForm.sleeve.$invalid && !tuxedoForm.sleeve.$pristine }">
+                        <span class="asterisk">*</span> Sleeve
+                        <input type="text" name="sleeve" class="form-control required" placeholder="" ng-model="tuxModel.measurements.sleeve" required>
+                        <p ng-show="tuxedoForm.sleeve.$invalid && !tuxedoForm.sleeve.$pristine" class="error">Sleeve is required.</p>
+                    </div>
+                    <div class="col col-md-7 col-xs-8">
+                        <p class="normal">With the arm straight down at your side, place tape at the base of the neck in back. Extend tape across the top of the shoulder, and down the arm to a point about one inch below the wrist bone. This measurement is for the shirt sleeve length which can also help to determine the coat length.</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col col-md-2 col-xs-3" ng-class="{ 'has-error' : tuxedoForm.shoeSize.$invalid && !tuxedoForm.shoeSize.$pristine }">
+                        <span class="asterisk">*</span> Shoe Size
+                        <input type="text" name="shoeSize" class="form-control required" placeholder="" ng-model="tuxModel.measurements.shoeSize" required>
+                        <p ng-show="tuxedoForm.shoeSize.$invalid && !tuxedoForm.shoeSize.$pristine" class="error">Shoe Size is required.</p>
+                    </div>
+                    <div class="col col-md-2 col-xs-3" ng-class="{ 'has-error' : tuxedoForm.shoeWidth.$invalid && !tuxedoForm.shoeWidth.$pristine }">
+                        <span class="asterisk">*</span> Shoe Width
+                        <input type="text" name="shoeWidth" class="form-control required" placeholder="" ng-model="tuxModel.measurements.shoeWidth" required>
+                        <p ng-show="tuxedoForm.shoeWidth.$invalid && !tuxedoForm.shoeWidth.$pristine" class="error">Shoe Width name is required.</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col col-md-4 col-xs-5">
+                        Guest Of...
+                        <input type="text" name="guestOf" class="form-control" placeholder="" ng-model="tuxModel.guestOf">
+                    </div>
+                </div>
+                <hr/>
+                <div class="row">
+                    <div class="col col-md-11 col-xs-11">
+                        <button type="button" class="btn btn-cancel pull-left" data-dismiss="modal" aria-label="Close" ng-click="cancelModal('tuxedo')">RESET</button>
+                        <button type="submit" class="btn btn-form pull-right" ng-disabled="tuxedoForm.$invalid">SUBMIT FORM <i class="fa fa-angle-right fa-lg"></i></button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- Tuxedo Form Response Modal -->
+<div class="modal fade" id="tuxedoModalResponse" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="form-heading">
+                    <div class="wave">
+                        <div>
+                            <br/>
+                            <span class="step-name">TUXEDO RENTAL FORM</span>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="container form">
+                    <div class="row">
+                        <div class="col col-md-11 col-xs-11 center" ng-hide="tuxedoError">
+                            <div class="info">
+                                <h3>
+                                    Your tuxedo rental form has been submitted!
+                                </h3>
+                            </div>
+                            <p>
+                                If you have any questions or changes to your submission, please contact <a href="mailto:terry_lincoln@agilent.com">terry_lincoln@agilent.com</a>
+                                <br/><p class="margin-top-20"><button type="button" class="btn btn-cancel" data-dismiss="modal" aria-label="Close" ng-click="closeTuxedoResponse('/overview')">BACK TO OVERVIEW</button></p>
+                            </p>
+                        </div>
+                        <div class="col col-md-11 col-xs-11 center" ng-show="tuxedoError">
+                            <div class="info">
+                                <h2>There was a problem!</h2>
+                            </div>
+                            <p>
+                                There was a problem submitting your information. Please try again.
+                            </p>
+                            <p class="margin-top-20"><button type="button" class="btn btn-cancel" data-dismiss="modal" aria-label="Close" ng-click="tuxedoError = false">CLOSE</button></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -10397,41 +10397,46 @@ padding-right: 0;*/
 }
 
 /* line 1475, ../../app/styles/main.scss */
+.margin-left-20 {
+  margin-left: 20px;
+}
+
+/* line 1478, ../../app/styles/main.scss */
 .neg-margin-left-100 {
   margin-left: -100px;
 }
 
-/* line 1479, ../../app/styles/main.scss */
+/* line 1482, ../../app/styles/main.scss */
 .margin-right-70 {
   margin-right: 70px;
 }
 
-/* line 1483, ../../app/styles/main.scss */
+/* line 1486, ../../app/styles/main.scss */
 .margin-right-35 {
   margin-right: 35px;
 }
 
-/* line 1487, ../../app/styles/main.scss */
+/* line 1490, ../../app/styles/main.scss */
 .height-100 {
   height: 100%;
 }
 
-/* line 1491, ../../app/styles/main.scss */
+/* line 1494, ../../app/styles/main.scss */
 .width-120 {
   width: 120px;
 }
 
-/* line 1495, ../../app/styles/main.scss */
+/* line 1498, ../../app/styles/main.scss */
 .width-130 {
   width: 130px;
 }
 
-/* line 1499, ../../app/styles/main.scss */
+/* line 1502, ../../app/styles/main.scss */
 .width-140 {
   width: 140px;
 }
 
-/* line 1503, ../../app/styles/main.scss */
+/* line 1506, ../../app/styles/main.scss */
 .width-150 {
   width: 150px;
 }

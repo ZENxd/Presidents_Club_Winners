@@ -31,6 +31,16 @@ angular.module('presidentsClubApp', [
                 controller: 'OverViewCtrl',
                 controllerAs: 'overView'
             })
+            .when('/photobook', {
+                templateUrl: 'views/photobook.html',
+                controller: 'OverViewCtrl',
+                controllerAs: 'overView'
+            })
+            .when('/tuxedo', {
+                templateUrl: 'views/tuxedo.html',
+                controller: 'OverViewCtrl',
+                controllerAs: 'overView'
+            })
             .when('/activities', {
                 templateUrl: 'views/activities.html',
                 controller: 'ActivitiesCtrl',
@@ -84,6 +94,7 @@ angular.module('presidentsClubApp')
 
             $scope.photobookError = false;
             $scope.tuxedoError = false;
+            $scope.timer = null;
 
             $scope.salesOrg = [{
                 id: 0,
@@ -158,12 +169,36 @@ angular.module('presidentsClubApp')
                                 $scope.photobookError = false;
                             }
                             // Show the response modal after post
-                            var modal = angular.element(document.querySelector('#photobookModal'));
                             var response = angular.element(document.querySelector('#photobookModalResponse'));
-                            modal.modal('hide');
                             response.modal('show');
                         });
                     }
+                }
+            };
+
+            $scope.closePhotoResponse = function(path) {
+                $scope.photobookError = false;
+                var response = angular.element(document.querySelector('#photobookModalResponse'));
+                response.modal('hide');
+
+                if (!$scope.timer) {
+                    $scope.timer = $timeout(
+                        function() {
+                            console.log('Timer started');
+                        },
+                        500
+                    ).then(
+                        function() {
+                            $timeout.cancel($scope.timer);
+                            $scope.timer = null;
+                            $location.path(path);
+                        },
+                        function() {
+                            $timeout.cancel($scope.timer);
+                            $scope.timer = null;
+                            $location.path(path);
+                        }
+                    );
                 }
             };
 
@@ -177,7 +212,7 @@ angular.module('presidentsClubApp')
                     for (var prop in $scope.tuxModel) {
                         if ($scope.tuxModel.hasOwnProperty(prop)) {
                             if ($scope.tuxModel[prop] === null || $scope.tuxModel[prop] === '') {
-                                if(prop !== 'guestOf') {
+                                if (prop !== 'guestOf') {
                                     console.log(prop, ' was null');
                                     checkModel = false;
                                 }
@@ -199,12 +234,36 @@ angular.module('presidentsClubApp')
                                 $scope.tuxedoError = false;
                             }
                             // Show the response modal after post
-                            var modal = angular.element(document.querySelector('#tuxedoModal'));
                             var response = angular.element(document.querySelector('#tuxedoModalResponse'));
-                            modal.modal('hide');
                             response.modal('show');
                         });
                     }
+                }
+            };
+
+            $scope.closeTuxedoResponse = function(path) {
+                $scope.tuxedoError = false;
+                var response = angular.element(document.querySelector('#tuxedoModalResponse'));
+                response.modal('hide');
+
+                if (!$scope.timer) {
+                    $scope.timer = $timeout(
+                        function() {
+                            console.log('Timer started');
+                        },
+                        500
+                    ).then(
+                        function() {
+                            $timeout.cancel($scope.timer);
+                            $scope.timer = null;
+                            $location.path(path);
+                        },
+                        function() {
+                            $timeout.cancel($scope.timer);
+                            $scope.timer = null;
+                            $location.path(path);
+                        }
+                    );
                 }
             };
 
@@ -293,7 +352,15 @@ angular.module('presidentsClubApp')
                 */
                 //Post Photo Book
                 postPhotobook: function(dataObj) {
+
                     var q = $q.defer();
+
+                    /* TEST RESPONSE MODAL WITH NO BACKEND ONLY
+                        var result = {msg:'Success! it worked...', error:false}; // or false to see error response
+                        q.resolve(result);
+
+                        // Comment out next $http.post method lines below to test with above
+                    */
                     $http.post('/api/v1/photobook', dataObj)
                         .success(function(result) {
                             q.resolve(result);
@@ -301,11 +368,21 @@ angular.module('presidentsClubApp')
                             q.reject(msg);
                             console.log(msg, code);
                         });
+                        
                     return q.promise;
                 },
                 //Post Tuxedo
                 postTuxedo: function(dataObj) {
+                    
                     var q = $q.defer();
+
+                    /* TEST RESPONSE MODAL WITH NO BACKEND ONLY
+                        var result = {msg:'Success', error:false}; // or false to see error response
+                        q.resolve(result);
+
+                        // Comment out next $http.post method lines below to test with above
+                    */
+
                     $http.post('/api/v1/tuxedo', dataObj)
                         .success(function(result) {
                             q.resolve(result);
@@ -313,6 +390,7 @@ angular.module('presidentsClubApp')
                             q.reject(msg);
                             console.log(msg, code);
                         });
+
                     return q.promise;
                 }
 
