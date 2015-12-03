@@ -36,9 +36,14 @@
     <footer class="footer">
         <div class="container">
             <span><img class="footer-logo" src="../images/footer-logo.88b2d05e.png"></span>
-            <span class="pull-right pad-top-8 copyright">© Copyright 2015 <span style="color:#e2ba23;"> Agilent Technologies</span></span>
+            <span class="pull-right pad-top-8 copyright">© Copyright <span id="year"></span> <span style="color:#e2ba23;"> Agilent Technologies</span></span>
         </div>
     </footer>
+    <script type="text/javascript">
+        var date = new Date();
+        var year = date.getFullYear();
+        document.getElementById("year").innerHTML = year;
+    </script>
     <script src="scripts/vendor.b80c85db.js"></script>
     <script src="scripts/scripts.32b4a944.js"></script>
 </body>
