@@ -88,6 +88,25 @@
                         <p ng-show="userForm.mgrLast.$invalid && !userForm.mgrLast.$pristine" class="error">Manager's Last Name is required.</p>
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col col-md-3 col-xs-4" ng-class="{ 'has-error' : userForm.country.$invalid && !userForm.country.$pristine }">
+                        <span class="asterisk">*</span> Winner's Country
+                        <input type="text" name="country" class="form-control required" placeholder="" ng-model="photobookModel.country" required>
+                        <p ng-show="userForm.country.$invalid && !userForm.country.$pristine" class="error">Winner's Country is required.</p>
+                    </div>
+                    <div class="col col-md-3 col-xs-4" ng-class="{ 'has-error' : userForm.guestName.$invalid && !userForm.guestName.$pristine }">
+                        <span class="asterisk">*</span> Guest's Name
+                        <input type="text" name="guestName" class="form-control required" placeholder="" ng-model="photobookModel.guestName" required>
+                        <p ng-show="userForm.guestName.$invalid && !userForm.guestName.$pristine" class="error">Guest's Name is required.</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col col-md-3 col-xs-4" ng-class="{ 'has-error' : userForm.yos.$invalid && !userForm.yos.$pristine }">
+                        <span class="asterisk">*</span> Years of Agilent Service
+                        <input type="text" name="yos" class="form-control required" placeholder="" ng-model="photobookModel.yos" required>
+                        <p ng-show="userForm.yos.$invalid && !userForm.yos.$pristine" class="error">Years of Service is required.</p>
+                    </div>
+                </div>
                 <!-- Comments -->
                 <div class="row">
                     <div class="col col-md-8 col-xs-8" ng-class="{ 'has-error' : userForm.like.$invalid && !userForm.like.$pristine }">
@@ -153,7 +172,10 @@
                             <p>
                                 If you have any questions or changes to your submission, please contact <a href="mailto:terry_perez@agilent.com">terry_perez@agilent.com</a>
                                 <br/>Also, please remember to <span class="strong">send Terry Perez your personal photo</span> for inclusion in the photo book.
-                                <br/><p class="margin-top-20"><button type="button" class="btn btn-cancel" data-dismiss="modal" aria-label="Close" ng-click="closePhotoResponse('/overview')">BACK TO OVERVIEW</button></p>
+                                <br/>
+                                <p class="margin-top-20">
+                                    <button type="button" class="btn btn-cancel" data-dismiss="modal" aria-label="Close" ng-click="closePhotoResponse('/overview')">BACK TO OVERVIEW</button>
+                                </p>
                             </p>
                         </div>
                         <div class="col col-md-11 col-xs-11 center" ng-show="photobookError">
@@ -163,7 +185,9 @@
                             <p>
                                 There was a problem submitting your information. Please try again.
                             </p>
-                            <p class="margin-top-20"><button type="button" class="btn btn-cancel" data-dismiss="modal" aria-label="Close" ng-click="photobookError = false">CLOSE</button></p>
+                            <p class="margin-top-20">
+                                <button type="button" class="btn btn-cancel" data-dismiss="modal" aria-label="Close" ng-click="photobookError = false">CLOSE</button>
+                            </p>
                         </div>
                     </div>
                 </div>

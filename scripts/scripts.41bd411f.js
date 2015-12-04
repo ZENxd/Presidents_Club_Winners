@@ -408,6 +408,9 @@ angular.module('presidentsClubApp')
                 title: '',
                 mgrFirst: '',
                 mgrLast: '',
+                country: '',
+                guestName: '',
+                yos: '',
                 comments: {
                     like: '',
                     goals: '',
