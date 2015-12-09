@@ -69,6 +69,8 @@ angular.module('presidentsClubApp')
     .controller('HomeCtrl', ['$scope', '$rootScope', '$location', '$window', 
         function($scope, $rootScope, $location, $window) {
 
+            $window.document.title = 'Agilent President’s Club | Home';
+
             $scope.next = function(path) {
                 $location.path(path);
             };
@@ -91,6 +93,8 @@ angular.module('presidentsClubApp')
 angular.module('presidentsClubApp')
     .controller('OverViewCtrl', ['$scope', '$rootScope', '$location', 'photobookService', 'tuxedoService', 'winnerService', '$timeout', '$window',
         function($scope, $rootScope, $location, photobookService, tuxedoService, winnerService, $timeout, $window) {
+
+            $window.document.title = 'Agilent President’s Club | Overview';
 
             $scope.photobookError = false;
             $scope.tuxedoError = false;
@@ -305,8 +309,10 @@ angular.module('presidentsClubApp')
  * Controller of the presidentsClubApp
  */
 angular.module('presidentsClubApp')
-    .controller('ActivitiesCtrl', ['$scope', '$rootScope', '$location', 
-        function($scope, $rootScope, $location) {
+    .controller('ActivitiesCtrl', ['$scope', '$rootScope', '$location', '$window', 
+        function($scope, $rootScope, $location, $window) {
+
+        	$window.document.title = 'Agilent President’s Club | Activities';
 
             $scope.next = function(path) {
                 $location.path(path);
@@ -324,8 +330,10 @@ angular.module('presidentsClubApp')
  * Controller of the presidentsClubApp
  */
 angular.module('presidentsClubApp')
-    .controller('FaqCtrl', ['$scope', '$rootScope', '$location', 
-        function($scope, $rootScope, $location) {
+    .controller('FaqCtrl', ['$scope', '$rootScope', '$location', '$window', 
+        function($scope, $rootScope, $location, $window) {
+
+        	$window.document.title = 'Agilent President’s Club | FAQ';
 
             $scope.next = function(path) {
                 $location.path(path);
